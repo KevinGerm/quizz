@@ -1,0 +1,301 @@
+:root {
+  /* ===== 🎨 Couleurs principales ===== */
+  --color-primary-blue: #2563eb; /* bleu principal (boutons, accent) */
+  --color-secondary-blue: #3b82f6; /* bleu clair pour hover ou progress bar */
+  --color-accent-purple: #6d28d9; /* violet pour gradient */
+  --color-accent-light-purple: #8b5cf6; /* violet plus doux pour effets */
+  --color-gradient-start: #2193f3; /* début du gradient (bleu) */
+  --color-gradient-end: #6d28d9; /* fin du gradient (violet) */
+
+  /* ===== 🧊 Couleurs de fond ===== */
+  --color-bg-main: linear-gradient(
+    135deg,
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
+  --color-bg-card: #ffffff; /* fond des cartes/blocs */
+  --color-bg-glass: rgba(255, 255, 255, 0.15); /* effet glassmorphism */
+  --color-bg-glass-border: rgba(255, 255, 255, 0.4);
+
+  /* ===== 🖋️ Couleurs de texte ===== */
+  --color-text-primary: #111827; /* texte principal */
+  --color-text-secondary: #1f2937; /* texte secondaire */
+  --color-text-light: #f9fafb; /* texte clair sur fond sombre */
+  --color-text-muted: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* texte secondaire sur gradient */
+
+  /* ===== 🧩 Autres éléments ===== */
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-shadow: rgba(0, 0, 0, 0.15);
+
+  /* ===== 💡 Utilitaires ===== */
+  --transition-fast: 0.2s ease;
+  --transition-slow: 0.4s ease;
+  --radius-small: 8px;
+  --radius-medium: 16px;
+  --radius-large: 24px;
+  --blur-amount: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input,
+textarea {
+  border-radius: 0;
+}
+
+button {
+  background: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body {
+  font-optical-sizing: auto;
+  background: var(--color-bg-main);
+  font-size: clamp(0.8rem, 1rem, 1.2rem);
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text-primary);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  padding: 0.3rem 0;
+}
+h1 {
+  font-size: clamp(2.8rem, 3rem, 3.2rem);
+  font-weight: 600;
+}
+h2 {
+  font-size: clamp(1.3rem, 1.5rem, 1.7rem);
+  font-weight: 600;
+}
+h3 {
+  font-size: clamp(1rem, 1.2rem, 1.4rem);
+  font-weight: 500;
+}
+
+/*
+-- HOMEPAGE --
+*/
+
+/*
+-- QUIZZ --
+*/
+.card {
+  background-color: var(--color-bg-card);
+  border-radius: 15px;
+  padding: 2rem;
+  width: 450px;
+  position: relative;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-header .timer {
+  background-color: var(--color-accent-purple);
+  color: var(--color-text-light);
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+}
+
+.card-header .progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: var(--color-border);
+  border-radius: 5px;
+}
+
+.progress-bar > div {
+  background: var(--color-bg-main);
+  height: 100%;
+  border-radius: inherit;
+  width: 0;
+  transition: width 0.5s ease-in-out;
+}
+
+.card-body .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-body .difficulty {
+  padding: 0.2rem 0.7rem;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+}
+
+.card-body p {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0.8rem 0 1.5rem 0;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-footer .result {
+  color: var(--color-text-primary);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.message {
+  background-color: #ff7f7f;
+  color: #8b0000;
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  border-radius: 0 0 15px 15px;
+  padding: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  display: none;
+}
+
+.btn.btn-primary {
+  background-color: var(--color-border);
+  padding: 0.7rem 1rem;
+  border-radius: 15px;
+}
+
+.btn.btn-primary.active {
+  background-color: var(--color-accent-purple);
+  color: var(--color-text-light);
+}
+
+/*
+-- CHECKBOX --
+*/
+.container {
+  display: block;
+  position: relative;
+  padding: 0.8rem 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+}
+
+.container:hover {
+  border-color: var(--color-accent-light-purple);
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  visibility: hidden;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: transparent;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: transparent;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 6px;
+  left: 5.5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.container input[type="radio"]:checked + .checkmark,
+.container:has(input[type="radio"]:checked) {
+  border-color: var(--color-accent-purple);
+  background-color: var(--color-accent-light-purple);
+  transition: background-color 0.5s;
+}
+
+/*
+-- MEDIA --
+*/
+@media screen and (width >= 900px) {
+}
